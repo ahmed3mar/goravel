@@ -3,6 +3,7 @@ package exceptions
 import (
 	"github.com/goravel/framework/contracts/config"
 	"github.com/goravel/framework/contracts/foundation"
+	"github.com/goravel/framework/facades"
 	"github.com/goravel/framework/foundation/exception"
 )
 
@@ -18,6 +19,9 @@ func (h *Handler) Register(app foundation.Application) {
 
 func (h *Handler) Report(throwable error) {
 	// check your throwable here
+
+	// here we wil catch all throwable
+	facades.Log().Error("Exception: ", throwable)
 
 	h.Handler.Report(throwable)
 }
